@@ -1,0 +1,7 @@
+@import '../../../theme/variables.scss';
+.color-danger {
+	background-color: map-get($colors, danger) !important;
+}
+.color-dark {
+	background-color: map-get($colors, dark) !important;
+}

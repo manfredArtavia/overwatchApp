@@ -1,0 +1,7 @@
+{
+  "name": "overwatchApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

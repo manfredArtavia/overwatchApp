@@ -1,0 +1,59 @@
+<ion-header>
+	<ion-toolbar color="tertiary">
+		<ion-title *ngIf="!isLoading" >
+				{{ hero.name }}
+				<ion-badge style=" height: 100%;
+				display: inline-block;
+				vertical-align: middle;">{{ hero.role.name | titlecase  }}</ion-badge>
+		</ion-title>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="/" color="secondary"></ion-back-button>
+		</ion-buttons>
+	</ion-toolbar>
+	<ion-fab top right edge>
+		<button ion-fab mini><ion-icon name="ios-star"></ion-icon></button>
+	</ion-fab>
+</ion-header>
+
+<ion-content color="dark" *ngIf="!isLoading">
+	<ion-list>
+			<ion-list-header>
+				<ion-text class="bold txt-sx" color="secondary">
+					Personal Info
+				</ion-text>
+			</ion-list-header>
+		<ion-item *ngFor="let field of personalFields" color="dark">
+			<ion-label class="bold" stacked>{{ field.label }}: </ion-label>
+			<ion-label type="text" disabled> {{ hero[field.name] }} </ion-label>
+		</ion-item>
+	</ion-list>
+
+	<ion-list>
+		<ion-list-header>
+			<ion-text class="bold txt-sx" color="secondary">
+				Stats
+			</ion-text>
+		</ion-list-header>
+		<ion-item *ngFor="let field of personalStatFields" color="dark">
+			<ion-label class="bold" stacked>{{field.label}}: </ion-label>
+			<ion-label type="text" disabled> {{hero[field.name]}} </ion-label>
+		</ion-item>
+	</ion-list>
+
+
+	<ion-list>
+		<ion-list-header>
+			<ion-text class="bold txt-sx" color="secondary">
+				Abilities
+			</ion-text>
+		</ion-list-header>
+		<ion-card *ngFor="let ability of hero?.abilities" >
+			<ion-card-header class="bold">
+				{{ ability.name }}
+			</ion-card-header>
+			<ion-card-content>
+				{{ ability.description }}
+				</ion-card-content>
+		</ion-card>
+	</ion-list>
+</ion-content>

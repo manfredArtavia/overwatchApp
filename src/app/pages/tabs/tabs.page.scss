@@ -1,0 +1,4 @@
+@import '../../../theme/variables.scss';
+.tab-selected {
+    color:map-get($colors, warning);
+}
