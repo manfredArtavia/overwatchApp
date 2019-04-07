@@ -1,17 +1,16 @@
 <ion-header>
 	<ion-toolbar color="tertiary">
 		<ion-title *ngIf="!isLoading" >
-				{{ hero.name }}
+				{{ hero.name }} {{msg}}
 				<ion-badge style=" height: 100%;
 				display: inline-block;
 				vertical-align: middle;">{{ hero.role.name | titlecase  }}</ion-badge>
 		</ion-title>
 		<ion-buttons slot="start">
-			<ion-back-button defaultHref="/" color="secondary"></ion-back-button>
+			<ion-back-button [defaultHref]="navigationService.getPrevRoute()" color="secondary"></ion-back-button>
 		</ion-buttons>
 	</ion-toolbar>
 	<ion-fab top right edge>
-		<button ion-fab mini><ion-icon name="ios-star"></ion-icon></button>
 	</ion-fab>
 </ion-header>
 
@@ -47,7 +46,7 @@
 				Abilities
 			</ion-text>
 		</ion-list-header>
-		<ion-card *ngFor="let ability of hero?.abilities" >
+		<ion-card *ngFor="let ability of hero?.abilities" [ngClass]="{'highlighted': ability.is_ultimate}" >
 			<ion-card-header class="bold">
 				{{ ability.name }}
 			</ion-card-header>

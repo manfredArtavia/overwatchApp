@@ -1,7 +1,8 @@
+import { NavigationService } from './../../services/navigation.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HeroeService } from 'src/app/services/heroe.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
 
 @Component({
 	selector: 'app-details',
@@ -9,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
 	styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
+	public msg: boolean;
 	public isLoading = true;
 	public hero: any;
 	public personalFields = 
@@ -46,9 +48,12 @@ export class DetailsPage implements OnInit {
 	constructor(
 		private heroService: HeroeService,
 		private activatedRoute: ActivatedRoute,
-		private loadingCtrl: LoadingController) { }
+		private loadingCtrl: LoadingController,
+		private platForm: Platform,
+		public navigationService: NavigationService) { }
 
 	async loadInfo() {
+		this.msg = this.platForm.is('mobile');
 		const heroId = this.activatedRoute.snapshot.paramMap.get('id');
 		const loading = await this.loadingCtrl.create({
 			message: 'Please wait...',
@@ -58,6 +63,7 @@ export class DetailsPage implements OnInit {
 		
 		this.heroService.getHero(heroId).subscribe(response => {
 			this.hero = response;
+			console.log('this.hero: ', this.hero);
 			this.isLoading = false;
 			loading.dismiss();
 		});

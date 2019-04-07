@@ -11,14 +11,24 @@
 @import '~@ionic/angular/css/flex-utils.css';
 @import './theme/variables.scss';
 
+// apply styles to the entire app, all ion lists should be dark
 ion-content {
 	ion-list {
 		background-color: map-get($colors, dark) !important;
 	}
 	ion-item-sliding {
 		ion-item {
-			background-color: map-get($colors, dark);	
+			background-color: map-get($colors, dark);			
+			padding: 10px 0px;
+
 		}
 		background-color: map-get($colors, dark);
 	}
+}
+
+.color-danger {
+	background-color: map-get($colors, danger) !important;
+}
+.color-dark {
+	background-color: map-get($colors, dark) !important;
 }

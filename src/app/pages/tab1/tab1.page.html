@@ -8,8 +8,8 @@
 
 <ion-content color="dark">
 	<ion-list>
-		<ion-item-sliding *ngFor="let hero of heroes" color="dark" (click)="getHero(hero.id)">
-			<ion-item color="dark">
+		<ion-item-sliding *ngFor="let hero of heroes" color="dark" #slidingItem>
+			<ion-item color="dark" (click)="getHero(hero.id)">
 				<ion-thumbnail item-start>
 					<img [src]="hero.imgAvailable ? '../../../assets/heroes portraits/'+hero.id+'.png' : '../../../assets/heroes portraits/default.png'">
 				</ion-thumbnail>
@@ -17,19 +17,11 @@
 					{{ hero.name }}
 				</span>
 			</ion-item>
-			<ion-item-options side="start">
+			<ion-item-options side="start" (click)="saveFavorite(hero, slidingItem);">
 				<button ion-button class="color-dark">
 					<ion-icon name="ios-star" color="warning"></ion-icon>
 				</button>
 				</ion-item-options>
-				<ion-item-options side="end" *ngIf="hero.height" >
-				<button ion-button class="color-danger">
-					<ion-text color="light">
-						Remove
-					</ion-text>
-				</button>
-			</ion-item-options>
-			
 		</ion-item-sliding>
 	</ion-list>
 </ion-content>

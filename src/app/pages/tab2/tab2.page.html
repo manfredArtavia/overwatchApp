@@ -7,5 +7,24 @@
 </ion-header>
 
 <ion-content  color="dark">
-
+	<ion-list>
+		<ion-item-sliding *ngFor="let hero of heroes" color="dark">
+			<ion-item color="dark" (click)="getHero(hero.id)">
+				<ion-thumbnail item-start>
+					<img [src]="hero.imgAvailable ? '../../../assets/heroes portraits/'+hero.id+'.png' : '../../../assets/heroes portraits/default.png'">
+				</ion-thumbnail>
+				<span class="ion-margin-start">
+					{{ hero.name }}
+				</span>
+			</ion-item>
+			<ion-item-options side="end">
+				<button ion-button class="color-danger" (click)="removeHero(hero.id)">
+					<ion-text color="light">
+						Remove
+					</ion-text>
+				</button>
+			</ion-item-options>
+			
+		</ion-item-sliding>
+	</ion-list>
 </ion-content>

@@ -1,7 +1,13 @@
+@import '../../../theme/variables.scss';
+
 .bold {
 	font-weight: bold;
 }
 
 .txt-sx {
 	font-size: 16px;
+}
+
+.highlighted {
+	background-color: map-get($colors, primary);
 }
