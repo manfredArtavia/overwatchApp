@@ -1,20 +1,16 @@
-import { NavigationService } from './../../services/navigation.service';
-import { Router } from '@angular/router';
-import { NativeTransitionOptions, NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
+import { NavigationService } from '../../services/navigation.service';
 import { OnInit } from '@angular/core';
-import { HeroeService } from './../../services/heroe.service';
+import { HeroeService } from '../../services/heroe.service';
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app-tab2',
-	templateUrl: 'tab2.page.html',
-	styleUrls: ['tab2.page.scss']
+	selector: 'app-favorites',
+	templateUrl: 'favorites.page.html',
+	styleUrls: ['favorites.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class FavoritesPage implements OnInit {
 	public heroes;
 	constructor(public heroeService: HeroeService,
-		private nativePageTransitions: NativePageTransitions,
-		private router: Router,
 		private nagivationService: NavigationService) {}
 
 	ngOnInit () {
@@ -31,7 +27,7 @@ export class Tab2Page implements OnInit {
 	}
 
 	getHero(id: number) {
-		this.nagivationService.go(`tabs/tab1/details/${id}`);
+		this.nagivationService.go(`details/${id}`);
 	}
 
 	removeHero(heroId) {

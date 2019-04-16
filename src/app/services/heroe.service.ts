@@ -15,8 +15,8 @@ export class HeroeService {
 	api = 'https://overwatch-api.net/api/v1';
 	constructor(private http: HttpClient, private storage: Storage, private toastController: ToastController) {
 		// this.storage.clear();
-		this.storage.get('favoriteHeroes').then( response => {
-			this.favoriteHeroesStore = response;
+		this.storage.get('favoriteHeroes').then((response) => {
+			this.favoriteHeroesStore = response || {};
 		});
 	}
 

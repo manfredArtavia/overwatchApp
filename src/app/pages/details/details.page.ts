@@ -10,7 +10,7 @@ import { LoadingController, Platform } from '@ionic/angular';
 	styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-	public msg: boolean;
+	public currentPlatform: boolean;
 	public isLoading = true;
 	public hero: any;
 	public personalFields = 
@@ -49,11 +49,11 @@ export class DetailsPage implements OnInit {
 		private heroService: HeroeService,
 		private activatedRoute: ActivatedRoute,
 		private loadingCtrl: LoadingController,
-		private platForm: Platform,
+		private platform: Platform,
 		public navigationService: NavigationService) { }
 
 	async loadInfo() {
-		this.msg = this.platForm.is('mobile');
+		this.currentPlatform = this.platform.is('mobile');
 		const heroId = this.activatedRoute.snapshot.paramMap.get('id');
 		const loading = await this.loadingCtrl.create({
 			message: 'Please wait...',
@@ -63,7 +63,6 @@ export class DetailsPage implements OnInit {
 		
 		this.heroService.getHero(heroId).subscribe(response => {
 			this.hero = response;
-			console.log('this.hero: ', this.hero);
 			this.isLoading = false;
 			loading.dismiss();
 		});

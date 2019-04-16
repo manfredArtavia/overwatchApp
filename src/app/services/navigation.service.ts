@@ -18,7 +18,7 @@ export class NavigationService {
 			iosdelay: 50
 		};
 
-		this.nativePageTransitions.fade(null);
+		this.nativePageTransitions.fade(options);
 		this.router.navigateByUrl(to);
 	}
 
